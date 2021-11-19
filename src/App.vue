@@ -1,19 +1,16 @@
 <template>
   <div id="app">
     <BicycleRentalShop></BicycleRentalShop>
-    <TotalIncome></TotalIncome>
   </div>
 </template>
 
 <script>
 import BicycleRentalShop from './components/BicycleRentalShop.vue'
-import TotalIncome from './components/TotalIncome.vue'
 
 export default {
   name: 'App',
   components: {
-    BicycleRentalShop,
-    TotalIncome
+    BicycleRentalShop
   }
 }
 </script>
