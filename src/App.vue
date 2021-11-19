@@ -20,8 +20,24 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /*text-align: center;*/
+  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  cursor: default;
+}
+
+button {
+  background-color: #C8D7DA;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 3px;
+  line-height: 1.5;
+  cursor: pointer;
+  margin: 3px;
+  box-shadow: 1px 2px 2px 1px #cccccc;
+}
+
+button.disabled, button:disabled {
+  background-color: #D3D3D3;
 }
 </style>
