@@ -11,17 +11,24 @@
       <li v-for="(rule, index) in rules" v-bind:key="index">{{ rule }}</li>
     </ol>
     <!--<p>Total income: {{ subtotalComputed }}</p>-->
+    <TotalIncome v-bind:incrementTotal="increment" v-on:resetall="reset"></TotalIncome>
   </div>
 </template>
 
 <script>
+import TotalIncome from './TotalIncome.vue'
+
 export default {
   name: 'BicycleRentalShop',
+  components: {
+    TotalIncome
+  },
   data() {
     return {
       price: 100,
       quantity: 20, // 總量
       count: 20, // 剩餘個數
+      increment: 0, // 租借次數
       rules: [
         '$100 each time.',
         'Please return no later than 18:00.',
@@ -40,6 +47,7 @@ export default {
     },
     minus() {
       this.count--;
+      this.increment++;
     },
     btnPlus() {
       return ((this.count >= this.quantity) ? true : false);
@@ -47,6 +55,10 @@ export default {
     btnMinus() {
       return ((this.count <= 0) ? true : false);
     },
+    reset() {
+      this.count = 20;
+      this.increment = 0;
+    }
   }
 }
 </script>
