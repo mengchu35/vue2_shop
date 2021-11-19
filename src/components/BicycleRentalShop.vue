@@ -2,15 +2,14 @@
   <div>
     <h1>Bicycle Rental Shop</h1>
     <p>Number of bicycles: {{ count }}</p>
-    <button v-on:click="plus" v-bind:disabled="btnPlus()">+1</button>
-    <button v-on:click="minus" v-bind:disabled="btnMinus()">-1</button>
+    <button v-on:click="plus" v-bind:disabled="btnPlus">+1</button>
+    <button v-on:click="minus" v-bind:disabled="btnMinus">-1</button>
     <p v-if="count == 0">No bike is available</p>
     <p v-else>Bikes are available</p>
     <p>Rules</p>
     <ol>
       <li v-for="(rule, index) in rules" v-bind:key="index">{{ rule }}</li>
     </ol>
-    <!--<p>Total income: {{ subtotalComputed }}</p>-->
     <TotalIncome v-bind:incrementTotal="increment" v-on:resetall="reset"></TotalIncome>
   </div>
 </template>
@@ -37,8 +36,11 @@ export default {
     }
   },
   computed: {
-    subtotalComputed: function() {
-      return this.price * this.quantity;
+    btnPlus() {
+      return ((this.count >= this.quantity) ? true : false);
+    },
+    btnMinus() {
+      return ((this.count <= 0) ? true : false);
     }
   },
   methods: {
@@ -48,12 +50,6 @@ export default {
     minus() {
       this.count--;
       this.increment++;
-    },
-    btnPlus() {
-      return ((this.count >= this.quantity) ? true : false);
-    },
-    btnMinus() {
-      return ((this.count <= 0) ? true : false);
     },
     reset() {
       this.count = 20;

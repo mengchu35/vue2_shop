@@ -18,7 +18,7 @@ export default {
     incrementTotal: Number
   },
   computed: {
-    TotalIncome: function() {
+    TotalIncome() {
       return this.price * this.incrementTotal;
     }
   },
